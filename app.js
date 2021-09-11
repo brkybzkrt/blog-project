@@ -10,6 +10,7 @@ const expressSession = require('express-session')
 const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override')
 const generateDate=require('./helpers/generateDate').generateDate
+const truncateString=require('./helpers/truncateString')
 
 const app= express()
 const port=3000
@@ -48,7 +49,8 @@ app.use(express.static('public'))
 //for views
 app.engine('handlebars', exphbs({
     helpers:{
-        generateDate
+        generateDate,
+        truncateString
     },
     defaultLayout: 'main',
     handlebars: allowInsecurePrototypeAccess(Handlebars)

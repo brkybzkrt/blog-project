@@ -5,10 +5,11 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const Handlebars = require('handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
-const moment = require('moment')
+
 const expressSession = require('express-session')
 const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override')
+const generateDate=require('./helpers/generateDate').generateDate
 
 const app= express()
 const port=3000
@@ -47,9 +48,7 @@ app.use(express.static('public'))
 //for views
 app.engine('handlebars', exphbs({
     helpers:{
-        generateDate:(date,format)=>{
-            return moment(date).locale('tr').format(format)
-        }
+        generateDate
     },
     defaultLayout: 'main',
     handlebars: allowInsecurePrototypeAccess(Handlebars)
@@ -86,6 +85,10 @@ app.use('/users',users)
 
 const admin = require('./routes/admin/admin')
 app.use('/admin',admin)
+
+const deneme = require('./routes/deneme');
+
+app.use('/deneme',deneme)
 
 
 app.listen(port,hostName,()=>{

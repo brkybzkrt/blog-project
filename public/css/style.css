@@ -931,7 +931,10 @@ span.writer {
 }
 
 
-
+.admin-nav{
+    float: left;
+    margin-right: 30px;
+}
 
 
 

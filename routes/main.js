@@ -39,9 +39,6 @@ router.get('/posts',(req,res)=>{
 
 })
 
-router.get('/contact',(req,res)=>{
-    res.render('site/contact')
-})
 
 
 

@@ -9,8 +9,9 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 const expressSession = require('express-session')
 const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override')
-const generateDate=require('./helpers/generateDate').generateDate
+const generateDate=require('./helpers/generateDate')
 const truncateString=require('./helpers/truncateString')
+
 
 const app= express()
 const port=3000
@@ -23,15 +24,6 @@ app.use(expressSession({
     saveUninitialized: true,
     store: MongoStore.create({mongoUrl:'mongodb://localhost/blog_app'})
 }))
-
-// for flash message
-app.use((req,res,next)=>{
-res.locals.sessionFlash= req.session.sessionFlash
-delete req.session.sessionFlash
-next()
-})
-
-
 
 
 
@@ -76,6 +68,15 @@ app.use((req,res,next)=>{
 })
 
 
+// for flash message
+app.use((req,res,next)=>{
+    res.locals.sessionFlash= req.session.sessionFlash
+    delete req.session.sessionFlash
+    next()
+    })
+    
+    
+
 const main = require('./routes/main')
 app.use('/',main)
 
@@ -89,9 +90,10 @@ const admin = require('./routes/admin/admin')
 app.use('/admin',admin)
 
 const deneme = require('./routes/deneme');
-
 app.use('/deneme',deneme)
 
+const contact = require('./routes/contact')
+app.use('/contact',contact)
 
 app.listen(port,hostName,()=>{
     console.log(`Server dinleniyor...,http://${hostName}:${port}/`)

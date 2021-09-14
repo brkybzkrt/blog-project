@@ -11,6 +11,7 @@ const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override')
 const generateDate=require('./helpers/generateDate')
 const truncateString=require('./helpers/truncateString')
+const paginate= require('./helpers/paginate')
 
 
 const app= express()
@@ -42,7 +43,8 @@ app.use(express.static('public'))
 app.engine('handlebars', exphbs({
     helpers:{
         generateDate,
-        truncateString
+        truncateString,
+        paginate
     },
     defaultLayout: 'main',
     handlebars: allowInsecurePrototypeAccess(Handlebars)

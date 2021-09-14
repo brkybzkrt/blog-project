@@ -44,6 +44,7 @@ typings/
 
 # images
 public/img/postImages
+public/ckeditor5-build-classic
 
 # Optional eslint cache
 .eslintcache

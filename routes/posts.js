@@ -3,6 +3,7 @@ const router = express.Router()
 const Post= require('../models/Post')
 const path= require('path')
 const Category = require('../models/Category')
+const searchRegex= require('../helpers/searchRegex')
 
 
 
@@ -20,6 +21,41 @@ router.get('/new',(req,res)=>{
     }
    
 })
+
+
+
+
+
+router.get("/search", (req, res)=> {
+    if (req.query.search) 
+    {
+       const regex = new RegExp(searchRegex(req.query.search), 'gi');
+      Post.find({ title: regex }).sort({_id:-1}).then(posts=> {
+        Category.aggregate([{
+
+            $lookup:{
+                from:'posts',
+                localField:'_id',
+                foreignField:'category',
+                as:'posts'
+            }},
+    
+            {$project:{
+                _id:1,
+                name:1,
+                countOfPosts:{$size: '$posts'}
+            }}
+        ]).sort({_id:-1}).then(categories=>{
+            Post.find({}).sort({_id:-1}).limit(3).then(threepost=>{
+
+                res.render('site/posts',{posts,categories,threepost})
+            })
+        })
+          
+       }) 
+    }
+})
+
 
 router.get('/category/:categoryId',(req,res)=>{
 let categoryId=req.params.categoryId

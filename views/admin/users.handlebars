@@ -1,0 +1,64 @@
+<section class="page-image page-image-about md-padding">
+		<h1 class="text-white text-center">USERS</h1>
+	</section>
+
+	
+	{{> admin-nav}}
+    <div class="container">
+        <div class="clearfix"></div>
+        <div class="row ">
+
+      
+        <div class="col-md-12">
+            {{#unless users}}
+            <h2 class="alert alert-danger text-center"> There Are No Users Yet </h2>
+            {{/unless}}
+
+            {{#if users}}
+           <table class="table">
+               <thead>
+                   <tr>
+                       <th>Firstname</th>
+                        <th>Lastname</th>
+                          <th>Username</th>
+                          <th>Email</th>
+                         <th>Date Of Register</th>
+                        <th>Status Of Admin</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   {{#each users}}
+                   <tr>
+                       <td>{{firstName}}</td>
+                       <td>{{lastName}}</td>
+                       <td>{{userName}}</td>
+                       <td>{{email}}</td>
+                       <td>{{generateDate date 'DD MMMM YYYY'}}</td>
+
+                       <td>{{isAdmin}}</td>
+                       <td>
+                           <form action="/admin/users/{{_id}}?_method=DELETE" method="POST">
+                               <input  type="hidden" name="_method" value="DELETE">
+                               <button  type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                           </form>
+                           
+                           </td>
+                  
+
+                            <td>
+                           <form action="/admin/users/{{_id}}?_method=PUT" method="POST">
+                               <input  type="hidden" name="_method" value="PUT">
+                                   <button  type="submit" class="btn btn-warning"><i class="far fa-edit text-white"></i></button>
+                           </form>
+                           
+                           </td>
+                   </tr>
+                   {{/each}}
+               </tbody>
+           </table>
+            {{/if}}
+        </div>  
+
+
+    </div>
+    </div>

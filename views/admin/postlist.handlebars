@@ -1,0 +1,61 @@
+	<section class="page-image page-image-about md-padding">
+		<h1 class="text-white text-center">POSTS</h1>
+	</section>
+
+	
+	{{> admin-nav}}
+	<div class="container">
+        <div class="clearfix"></div>
+        <div class="row ">
+
+      
+        <div class="col-md-12 ">
+            {{#unless posts}}
+            <h2 class="alert alert-danger text-center">  There Are No Posts Yet <i class="far fa-frown"></i></h2>
+            {{/unless}}
+
+            {{#if posts}}
+           <table class="table">
+               <thead>
+                   <tr>
+                       <th>Title</th>
+                        <th>Category</th>
+                          <th>Username</th>
+                         <th>delete</th>
+                        <th>edit</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   {{#each posts}}
+                   <tr>
+                       <td>{{title}}</td>
+                       <td>{{category.name}}</td>
+                       <td>{{author.userName}}</td>
+                       <td>
+                           <form action="/admin/posts/{{_id}}?_method=DELETE" method="POST">
+                               <input  type="hidden" name="_method" value="DELETE">
+                               <button  type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                           </form>
+                           
+                           </td>
+                  
+
+                            <td>
+                           <form action="/admin/posts/{{_id}}?_method=PUT" method="POST">
+                               <input  type="hidden" name="_method" value="PUT">
+                                   <button  type="submit" class="btn btn-warning"><i class="far fa-edit text-white"></i></button>
+                           </form>
+                           
+                           </td>
+                   </tr>
+                   {{/each}}
+               </tbody>
+           </table>
+            {{/if}}
+        </div>  
+
+
+    </div>
+    </div>
+    
+	

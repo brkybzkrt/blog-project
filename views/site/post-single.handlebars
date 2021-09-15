@@ -20,7 +20,7 @@
 <main id="main" class="col-md-8">
 					<div class="blog">
 						<div class="blog-img">
-							<img class="img-fluid" src="{{post.post_image}}" alt="">
+							<img class="img-fluid" src="{{post.post_image}}" alt="" >
 						</div>
 						<div class="blog-content">
 							<ul class="blog-meta">
@@ -65,64 +65,9 @@
 				</main>
 				<!-- /Main -->
 				
-				<aside id="aside" class="col-md-4">
-                    
-                    <div class="widget">
-						<div class="widget-search">
-							<input class="search-input form-control" type="text" placeholder="Search">
-							<button class="search-btn" type="button"><i class="fas fa-search"></i></button>
-						</div>
-					</div>
-					<!-- /Search -->
-                    
-                    
-					<!-- Category -->
-					{{> site-sidebar-categories}}
-					<!-- /Category -->
-
-					<!-- Posts sidebar -->
-					<div class="widget">
-						<h3 class="mb-3">Latest Posts</h3>
-
-						<!-- single post -->
-						<div class="widget-post">
-							<a href="#">
-								<img class="img-fluid" src="/img/post1.jpg" alt=""> Lorem Ipsum
-							</a>
-							<ul class="blog-meta">
-								<li>Oct 18, 2017</li>
-							</ul>
-						</div>
-						<!-- /single post -->
-
-						<!-- single post -->
-						<div class="widget-post">
-							<a href="#">
-								<img class="img-fluid" src="/img/post2.jpg" alt=""> Lorem Ipsum
-							</a>
-							<ul class="blog-meta">
-								<li>Oct 18, 2017</li>
-							</ul>
-						</div>
-						<!-- /single post -->
-
-
-						<!-- single post -->
-						<div class="widget-post">
-							<a href="#">
-								<img class="img-fluid" src="/img/post3.jpg" alt=""> Lorem Ipsum
-							</a>
-							<ul class="blog-meta">
-								<li>Oct 18, 2017</li>
-							</ul>
-						</div>
-						<!-- /single post -->
-
-					</div>
-					<!-- /Posts sidebar -->
-
-				</aside>
 				
+					{{> site-sidebar-categories}}
+					
 				
 				
 			</div>

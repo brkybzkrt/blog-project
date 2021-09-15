@@ -9,9 +9,11 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 const expressSession = require('express-session')
 const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override')
+
 const generateDate=require('./helpers/generateDate')
 const truncateString=require('./helpers/truncateString')
 const paginate= require('./helpers/paginate')
+
 
 
 const app= express()

@@ -1,8 +1,54 @@
-<div class="widget">
-    <h3 class="mb-3">Category</h3>
-    <div class="widget-category">
-    {{#each categories}}            
-    <a href="">{{name}}<span>(7)</span></a>
-     {{/each}}                           
-    </div>
-</div>
+
+
+
+
+<aside id="aside" class="col-md-4">
+                    
+                    <div class="widget">
+						<div class="widget-search">
+                            <form action="/posts/search" method="GET">
+							<input class="search-input form-control" type="text" name="search" placeholder="Search">
+							<button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+                            </form>
+						</div>
+					</div>
+					<!-- /Search -->
+                    
+                    
+					<!-- Category -->
+					<div class="widget">
+                        <h3 class="mb-3">Category</h3>
+                        <div class="widget-category">
+                        {{#each categories}}            
+                        <a href="/posts/category/{{_id}}">{{name}}<span>({{countOfPosts}})</span></a>
+                        {{/each}}                           
+                        </div>
+                    </div>
+
+
+					<!-- /Category -->
+
+					<!-- Posts sidebar -->
+					<div class="widget">
+						<h3 class="mb-3">Latest Posts</h3>
+
+					{{#each threepost}}
+						<!-- single post -->
+						<div class="widget-post">
+							<a href="/posts/{{_id}}">
+								<img class="img-fluid" src="{{post_image}}" alt="">{{title}}
+							</a>
+							<ul class="blog-meta">
+								<li>{{generateDate date 'DD MMM YYYY'}}</li>
+							</ul>
+						</div>
+						{{/each}}
+						<!-- /single post -->
+
+					
+
+					</div>
+					<!-- /Posts sidebar -->
+
+				</aside>
+				

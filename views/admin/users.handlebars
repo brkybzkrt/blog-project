@@ -24,6 +24,8 @@
                           <th>Email</th>
                          <th>Date Of Register</th>
                         <th>Status Of Admin</th>
+                        <th>delete</th>
+                        
                    </tr>
                </thead>
                <tbody>
@@ -37,7 +39,7 @@
 
                        <td>{{isAdmin}}</td>
                        <td>
-                           <form action="/admin/users/{{_id}}?_method=DELETE" method="POST">
+                           <form action="/admin/users/delete/{{_id}}?_method=DELETE" method="POST">
                                <input  type="hidden" name="_method" value="DELETE">
                                <button  type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                            </form>
@@ -45,13 +47,7 @@
                            </td>
                   
 
-                            <td>
-                           <form action="/admin/users/{{_id}}?_method=PUT" method="POST">
-                               <input  type="hidden" name="_method" value="PUT">
-                                   <button  type="submit" class="btn btn-warning"><i class="far fa-edit text-white"></i></button>
-                           </form>
-                           
-                           </td>
+                          
                    </tr>
                    {{/each}}
                </tbody>

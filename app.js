@@ -93,8 +93,8 @@ app.use('/users',users)
 const admin = require('./routes/admin/admin')
 app.use('/admin',admin)
 
-const deneme = require('./routes/deneme');
-app.use('/deneme',deneme)
+const activeUser = require('./routes/activeUser');
+app.use('/activeUser',activeUser)
 
 const contact = require('./routes/contact')
 app.use('/contact',contact)

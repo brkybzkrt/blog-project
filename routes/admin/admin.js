@@ -83,8 +83,8 @@ router.get('/postlist',(req,res)=>{
 })
 
 router.delete('/posts/:id',(req,res)=>{
-    const _id=req.params.id
-    Post.deleteOne({_id}).then(()=>{
+    const id=req.params.id
+    Post.deleteOne({_id:id}).then(()=>{
        
        res.redirect('/admin/postlist')
    
@@ -101,6 +101,16 @@ router.get('/users',(req,res)=>{
     })
 
    })
+
+
+
+router.delete('/users/delete/:id',(req,res)=>{
+    const id=req.params.id
+
+    User.deleteOne({_id:id}).then(()=>{
+        res.redirect('/admin/users')
+    })
+})
 
 
 module.exports=router;

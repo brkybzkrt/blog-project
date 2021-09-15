@@ -10,6 +10,7 @@ router.get('/register',(req,res)=>{
 res.render('site/register')
 })
 
+
 router.post('/register',(req,res)=>{
     
 const {firstName,lastName,userName,password,email}=req.body
@@ -23,11 +24,16 @@ const {firstName,lastName,userName,password,email}=req.body
         newUser.email=email
         newUser.password=hash
     
-    newUser.save().then(newUser=>{
-         res.redirect('/')})
+        newUser.save()
+
+        req.session.sessionFlash ={
+            type:'alert alert-success',
+            message:'Kayıt başarılı, giriş yapabilirsiniz'
+        }
+    res.redirect('/users/login')
     });
-    
-    
+   
+   
 })
 
 

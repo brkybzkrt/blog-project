@@ -21,7 +21,7 @@ const port=process.env.PORT|| 3000
 const hostName='127.0.0.1'
 
 const  mongoUri='mongodb+srv://brkzbzkrt:secret12345@blog-app.iccra.mongodb.net/blog-app?retryWrites=true&w=majority';
-mongoose.connect( mongoUri);
+mongoose.connect(mongoUri);
 
 app.use(expressSession({
     secret:'denemedeneme',

@@ -4,7 +4,11 @@
   "description": "my blog project with node.js",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "14.17.0",
+    "npm":"6.14.13"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +29,5 @@
     "handlebars": "^4.7.7"
   },
   "devDependencies": {
-    
-    
   }
 }

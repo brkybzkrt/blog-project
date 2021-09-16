@@ -19,13 +19,15 @@ const paginate= require('./helpers/paginate')
 const app= express()
 const port=process.env.PORT|| 3000
 const hostName='127.0.0.1'
-mongoose.connect('mongodb://localhost/blog_app');
+
+const  mongoUri='mongodb+srv://brkzbzkrt:secret12345@blog-app.iccra.mongodb.net/blog-app?retryWrites=true&w=majority';
+mongoose.connect( mongoUri);
 
 app.use(expressSession({
     secret:'denemedeneme',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({mongoUrl:'mongodb://localhost/blog_app'})
+    store: MongoStore.create({mongoUrl: mongoUri})
 }))
 
 
